@@ -1,28 +1,8 @@
-name: CI Pipeline
+- name: Show Node version
+  run: node -v
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+- name: Show npm version
+  run: npm -v
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: '24'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+- name: List files
+  run: ls -la
