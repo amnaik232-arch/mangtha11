@@ -1,8 +1,21 @@
-- name: Show Node version
-  run: node -v
+name: Node.js CI
 
-- name: Show npm version
-  run: npm -v
+on:
+  push:
+    branches:
+      - main
 
-- name: List files
-  run: ls -la
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - run: npm install
+
+      - run: npm test
